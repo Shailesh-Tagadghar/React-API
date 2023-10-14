@@ -1,9 +1,13 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Student from './Student';
+
 
 function App() {
   return (
-   <h1>Hello</h1>
+  <div>
+    <Student/>
+  </div>
   );
 }
 
