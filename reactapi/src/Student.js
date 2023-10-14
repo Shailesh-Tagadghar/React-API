@@ -41,6 +41,17 @@ export default function Student() {
                 refreshListing()
             })
     }
+
+    var addRec = (id,name,age,city) => {
+        alert('Add record');
+
+        fetch(`http://localhost:8989/students` , {"method" : "POST"})
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+            refreshListing();
+        })
+    }
     return (
         <>
             {/* {JSON.stringify(data)} */}
