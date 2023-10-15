@@ -42,27 +42,32 @@ export default function Student() {
             })
     }
 
-    var addRec = (id,name,age,city) => {
+    var addRec = (id, name, age, city) => {
         alert('Add record');
 
-        fetch(`http://localhost:8989/students` , {"method" : "POST"})
-        .then(res => res.json())
-        .then(result => {
-            console.log(result);
-            refreshListing();
-        })
+        fetch(`http://localhost:8989/students`, { "method": "POST" })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                refreshListing();
+            })
     }
     return (
         <>
             {/* {JSON.stringify(data)} */}
             <table border={2} cellPadding={5} cellSpacing={2}>
                 <thead>
+                    {/* <tr> */}
+                    {/* <center><a href={`studentadd`}><button className='btn btn-info'>Add New Students</button></a></center> */}
+                    {/* </tr> */}
+                    {/* <br /> */}
                     <tr>
                         <th>Sr. No</th>
                         <th>Name</th>
                         <th>Age</th>
                         <th>City</th>
-                        <th>Action</th>
+                        <th colSpan={2}>Action</th>
+                        <a href={`studentadd`}><button className='btn btn-info'>Add New Students</button></a>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,7 +78,10 @@ export default function Student() {
                                 <td>{x.name}</td>
                                 <td>{x.age}</td>
                                 <td>{x.city}</td>
-                                <td><button onClick={() => { deleteRec(x._id) }} className='btn btn-danger'>Delete</button></td>
+                                <td>
+                                    <a href={`studentedit?id=${x._id}`}><button className='btn btn-primary'>Update</button></a>&nbsp;
+                                    <button onClick={() => { deleteRec(x._id) }} className='btn btn-danger'>Delete</button>&nbsp;
+                                </td>
                             </tr>;
                         })
                     }

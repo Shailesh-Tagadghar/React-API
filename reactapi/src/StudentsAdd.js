@@ -45,7 +45,8 @@ export default function StudentsAdd() {
     })
         .then(res => res.json())
         .then(result => {
-            window.location.reload()
+            // window.location.reload()
+            window.location.href="/";
             console.log(result);
         })
     }

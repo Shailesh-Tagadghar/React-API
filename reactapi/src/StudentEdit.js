@@ -46,8 +46,10 @@ export default function StudentEdit() {
     })
         .then(res => res.json())
         .then(result => {
-            window.location.reload()
-            console.log(result);
+            // window.location.reload()
+            // console.log(result);
+            window.location.href="/";
+            alert(result.result);
         })
     }
 

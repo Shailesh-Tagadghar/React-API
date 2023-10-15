@@ -3,13 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Student from './Student';
+import StudentsAdd from './StudentsAdd';
+import StudentEdit from './StudentEdit';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
+  <Routes>
+    <Route index element={ <Student /> }/>
+    <Route path='studentadd' element={ <StudentsAdd /> }/>
+    <Route path='studentedit' element={ <StudentEdit /> }/>
+  </Routes>
    <App />
    </BrowserRouter>
 
