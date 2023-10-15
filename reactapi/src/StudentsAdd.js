@@ -25,7 +25,29 @@ export default function StudentsAdd() {
     const [city, setCity] = useState("");
 
     var postData = () => {
-        alert(`post is working`)
+
+        var data = {
+            "name" : name,
+            "age"  : age,
+            "city" : city
+        }
+
+        // alert(JSON.stringify(data));
+        // console.log(data);
+
+        fetch(`http://localhost:8989/students`, {
+        method : "POST",
+        headers : {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(res => res.json())
+        .then(result => {
+            window.location.reload()
+            console.log(result);
+        })
     }
 
     return (
