@@ -68,7 +68,7 @@ export default function Student() {
                 <tbody>
                     {
                         data.map((x, i) => {
-                            return <tr>
+                            return <tr key={i}>
                                 <td>{i + 1}</td>
                                 <td>{x.name}</td>
                                 <td>{x.age}</td>
