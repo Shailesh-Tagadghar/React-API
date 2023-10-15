@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
 
 export default function StudentEdit() {
 
-    const [id, setId] = useState("6521138c71bd45dbd99217d2");
+    const [SearchParams] = useSearchParams();
+
+    var studentId = SearchParams.get("id");
+
+    const [id, setId] = useState(studentId);
     const [name, setName] = useState("");
     const [age, setAge] = useState(0);
     const [city, setCity] = useState("");
@@ -43,6 +48,7 @@ export default function StudentEdit() {
             <button onClick={ putData }>Update Student</button>
 
             <h4>
+                Id : {id} <br />
                 Name : {name} <br />
                 Age  : {age} <br />
                 City : {city} <br />
