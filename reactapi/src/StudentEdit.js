@@ -1,16 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 
 export default function StudentEdit() {
 
     const [SearchParams] = useSearchParams();
 
-    var studentId = SearchParams.get("id");
+    var studentid = SearchParams.get("id");
 
-    const [id, setId] = useState(studentId);
+    const [id, setId] = useState(studentid);
     const [name, setName] = useState("");
     const [age, setAge] = useState(0);
     const [city, setCity] = useState("");
+
+    useEffect(() => {
+        fetch(`http://localhost:8989/students/${id}`)
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+            console.table(result)
+            setName(result.name)
+            setAge(result.age)
+            setCity(result.city)
+        })
+    },[])
 
     var putData = () => {
 
@@ -41,9 +53,9 @@ export default function StudentEdit() {
 
   return (
     <div>
-            Name :  <input type='text' onChange={(e) => { setName(e.target.value) }} /> <br />
-            Age  :  <input type='text' onChange={(e) => { setAge(e.target.value) }} /> <br />
-            City :  <input type='text' onChange={(e) => { setCity(e.target.value) }} /> <br /><br />
+            Name :  <input type='text' value={name} onChange={(e) => { setName(e.target.value) }} /> <br />
+            Age  :  <input type='text' value={age} onChange={(e) => { setAge(e.target.value) }} /> <br />
+            City :  <input type='text' value={city} onChange={(e) => { setCity(e.target.value) }} /> <br /><br />
 
             <button onClick={ putData }>Update Student</button>
 
